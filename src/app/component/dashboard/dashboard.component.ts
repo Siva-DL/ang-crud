@@ -9,8 +9,9 @@ export class DashboardComponent implements OnInit {
   constructor() {}
 
   // our Todo Items List:
-  todoList!: object[];
-  itemVal: string = 'null';
+  todoList: any[] = [];
+  itemVal: string = '';
+  editedVal: any = {};
 
   // todoList: [
   //   {
@@ -19,15 +20,30 @@ export class DashboardComponent implements OnInit {
   //   }
   // ] = [{ id: '', todoItem: '' }];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.todoList);
+  }
 
   // C-R-U-D:
 
   // Push the Values: on an event occurs
-  i = 0;
   addTodo(todo: string) {
-    this.todoList.push({ id: this.i++, todoItem: todo });
-    console.log(this.todoList);
+    // console.log(todo);
+    this.todoList.push({ id: this.todoList.length + 1, todoItem: todo });
+    this.itemVal = '';
+  }
+
+  delete(todo: any) {
+    this.todoList.splice(this.todoList.indexOf(todo), 1);
+  }
+
+  edit(editVal: any) {
+    this.itemVal = editVal.todoItem;
+    this.editedVal = editVal;
+  }
+
+  updateTodo(updateTodo: any) {
+    this.editedVal.todoItem = updateTodo;
   }
 
   // delete, updating, reading

@@ -1,4 +1,18 @@
+<!-- Todo: need to add a BS-containeer, card, make the content center -->
 <div class="p-5">
+
     <input type="text" [(ngModel)]="itemVal" value="{itemVal}">
+
     <button (click)="addTodo(itemVal)"> Add </button>
+    <button (click)="updateTodo(itemVal)"> update </button>
+</div>
+
+<div class="p-5">
+    <ul>
+        <li *ngFor="let todo of todoList">
+            <span> {{ todo.todoItem}} </span>
+            <button (click)="edit(todo)">e</button>
+            <button (click)="delete(todo)">-</button>
+        </li>
+    </ul>
 </div>
