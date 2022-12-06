@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './routes/home/home.component';
@@ -9,6 +10,7 @@ import { ExperienceComponent } from './routes/child/experience/experience.compon
 import { EducationComponent } from './routes/child/education/education.component';
 import { NotfoundComponent } from './routes/notfound/notfound.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 const myRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +19,7 @@ const myRoutes: Routes = [
     component: AboutComponent,
     children: [{ path: 'experience', component: ExperienceComponent }],
   },
+  { path: 'products', component: ProductsListComponent },
   { path: '**', component: NotfoundComponent },
 ];
 @NgModule({
@@ -28,8 +31,9 @@ const myRoutes: Routes = [
     EducationComponent,
     NotfoundComponent,
     FooterComponent,
+    ProductsListComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(myRoutes)],
+  imports: [BrowserModule, RouterModule.forRoot(myRoutes), HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
