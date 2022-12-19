@@ -8,6 +8,7 @@ import { GetCallService } from '../get-call.service';
 })
 export class ProductsListComponent implements OnInit {
   prodctsList: any;
+  showLoader: boolean = true;
   prductRecord = {
     id: 15,
     title: 'Sample',
@@ -33,10 +34,12 @@ export class ProductsListComponent implements OnInit {
   }
 
   getProductsList() {
+    this.showLoader = true;
     this.products.fetchAllProducts().subscribe((data) => {
-      console.log(data);
+      console.log(data.slice(0, 10));
       // print only 10/20 records;
-      this.prodctsList = data;
+      this.prodctsList = data.splice(0, 8);
+      this.showLoader = false;
     });
   }
 }

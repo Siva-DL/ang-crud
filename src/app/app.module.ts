@@ -11,6 +11,7 @@ import { EducationComponent } from './routes/child/education/education.component
 import { NotfoundComponent } from './routes/notfound/notfound.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { ProdcuDetailsComponent } from './prodcu-details/prodcu-details.component';
 
 const myRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const myRoutes: Routes = [
     children: [{ path: 'experience', component: ExperienceComponent }],
   },
   { path: 'products', component: ProductsListComponent },
+  { path: 'product/:id', component: ProdcuDetailsComponent },
   { path: '**', component: NotfoundComponent },
 ];
 @NgModule({
